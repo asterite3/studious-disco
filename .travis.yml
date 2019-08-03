@@ -33,4 +33,4 @@ deploy:
 _deploy-snap: &deploy-snap
   provider: snap
   skip_cleanup: true
-  snap: *.snap
+  snap: "*.snap"
