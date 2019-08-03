@@ -1,0 +1,36 @@
+services:
+  - docker
+
+stages:
+  - lint
+  - build
+  - deploy
+
+jobs:
+  include:
+    - stage: lint
+      script: echo lint
+    - stage: build
+      script: echo build
+
+deploy:
+  - <<: *deploy-snap
+    channel: stable
+    on:
+      tags: true
+
+  - <<: *deploy-snap
+    channel: edge
+    on:
+      branch: master
+
+  - <<: *deploy-snap
+    channel: edge/$TRAVIS_BRANCH
+    on:
+      all_branches: true
+      condition: $TRAVIS_BRANCH != master
+
+_deploy-snap: &deploy-snap
+  provider: snap
+  skip_cleanup: true
+  snap: *.snap
