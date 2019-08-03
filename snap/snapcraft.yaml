@@ -6,8 +6,6 @@ description: |
   most important story about your snap. Keep it under 100 words though,
   we live in tweetspace and your description wants to look good in the snap
   store.
-
-grade: devel
 confinement: strict
 
 parts:
