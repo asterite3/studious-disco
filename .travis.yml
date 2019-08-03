@@ -13,7 +13,13 @@ jobs:
     - stage: lint
       script: echo lint
     - stage: build
-      script: echo build
+      script: |
+        docker run \
+	             --tty \
+	             --volume "$PWD":/build \
+	             --workdir /build \
+	             --entrypoint snapcraft \
+	             snapcore/snapcraft:stable
     - stage: deploy
       script: skip
       deploy:
