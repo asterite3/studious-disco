@@ -31,5 +31,6 @@ jobs:
           snap: "*.snap"
           channel: edge/$TRAVIS_BRANCH
           on:
+            tags: false
             all_branches: true
             condition: $TRAVIS_BRANCH != master
