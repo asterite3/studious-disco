@@ -15,11 +15,11 @@ jobs:
     - stage: build
       script: |
         docker run \
-	             --tty \
-	             --volume "$PWD":/build \
-	             --workdir /build \
-	             --entrypoint snapcraft \
-	             snapcore/snapcraft:stable
+                     --tty \
+                     --volume "$PWD":/build \
+                     --workdir /build \
+                     --entrypoint snapcraft \
+                     snapcore/snapcraft:stable
     - stage: deploy
       script: skip
       deploy:
