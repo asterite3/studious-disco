@@ -1,9 +1,6 @@
 language: bash
 dist: bionic
 
-services:
-  - docker
-
 addons:
   snaps:
     - snapcraft
@@ -18,13 +15,7 @@ jobs:
     - stage: lint
       script: echo lint
     - stage: build
-      script: |
-        docker run \
-                     --tty \
-                     --volume "$PWD":/build \
-                     --workdir /build \
-                     --entrypoint snapcraft \
-                     snapcore/snapcraft:stable
+      script: snapcraft
     - stage: deploy
       script: skip
       deploy:
