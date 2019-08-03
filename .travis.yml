@@ -3,7 +3,8 @@ dist: bionic
 
 addons:
   snaps:
-    - snapcraft
+    - name: snapcraft
+      confinement: classic
 
 stages:
   - deploy
