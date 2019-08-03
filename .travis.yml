@@ -6,18 +6,12 @@ addons:
     - snapcraft
 
 stages:
-  - lint
-  - build
   - deploy
 
 jobs:
   include:
-    - stage: lint
-      script: echo lint
-    - stage: build
-      script: snapcraft
     - stage: deploy
-      script: skip
+      script: snapcraft
       deploy:
         - provider: snap
           skip_cleanup: true
