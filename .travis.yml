@@ -1,7 +1,12 @@
-language: generic
+language: bash
+dist: bionic
 
 services:
   - docker
+
+addons:
+  snaps:
+    - snapcraft
 
 stages:
   - lint
@@ -21,8 +26,6 @@ jobs:
                      --entrypoint snapcraft \
                      snapcore/snapcraft:stable
     - stage: deploy
-      before_install:
-        - sudo apt-get install -y snapcraft
       script: skip
       deploy:
         - provider: snap
