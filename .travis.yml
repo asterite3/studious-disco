@@ -1,3 +1,5 @@
+language: generic
+
 services:
   - docker
 
@@ -14,23 +16,24 @@ jobs:
       script: echo build
 
 deploy:
-  - <<: *deploy-snap
+  - provider: snap
+    snap: "*.snap"
+    skip_cleanup: true
     channel: stable
     on:
       tags: true
 
-  - <<: *deploy-snap
+  - provider: snap
+    snap: "*.snap"
+    skip_cleanup: true
     channel: edge
     on:
       branch: master
 
-  - <<: *deploy-snap
+  - provider: snap
+    snap: "*.snap"
+    skip_cleanup: true
     channel: edge/$TRAVIS_BRANCH
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH != master
-
-_deploy-snap: &deploy-snap
-  provider: snap
-  skip_cleanup: true
-  snap: "*.snap"
