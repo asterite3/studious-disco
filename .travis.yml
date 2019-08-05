@@ -12,7 +12,7 @@ stages:
 jobs:
   include:
     - stage: deploy
-      script: snapcraft
+      script: printenv
       deploy:
         - provider: snap
           skip_cleanup: true
